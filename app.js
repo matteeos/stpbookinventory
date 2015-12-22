@@ -16,7 +16,9 @@ module.exports = function(DBClient) {
   app.use(routes.clientError);
   app.use(routes.serverError);
 
-  var server = app.listen(3000, function () {
+  var port = process.env.APP_PORT || 3000;
+
+  var server = app.listen(port, function () {
     var host = server.address().address;
     var port = server.address().port;
     console.log('Example app listening at http://%s:%s', host, port);
