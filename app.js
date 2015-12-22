@@ -11,6 +11,10 @@ module.exports = function(DBClient) {
 
   app.post('/stock', routes.insertStock);
   app.get('/stock/:isbn', routes.findStock);
+  app.get('/', function (req, res) {
+    res.sendFile(__dirname + '/views/index.html');
+  });
+
 
   app.use(routes.clientError);
   app.use(routes.serverError);

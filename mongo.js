@@ -3,6 +3,7 @@ var MongoClient = require('mongodb').MongoClient
 exports.connect = function() {
   // Connection URL
   var url = process.env.DB_URL || 'mongodb://localhost:27017/myproject';
+  console.log('Using db:' + url);
   return MongoClient.connect(url);
 }
 
