@@ -17,14 +17,14 @@ exports.close = function(db) {
 }
 
 exports.insertStock = function(db, data) {
-  var collection = db.collection('books');
+  var collection = db.collection('books_msz');
   collection.updateOne( {'isbn': data.isbn}, data, { upsert: true}).then(function(data) {
     return data;
   });
 }
 
 exports.findAll = function(db, callback) {
-  var collection = db.collection('books');
+  var collection = db.collection('books_msz');
   collection.find({}).toArray(function(err, docs) {
     console.log("Found the following records");
     console.dir(docs)
@@ -33,7 +33,7 @@ exports.findAll = function(db, callback) {
 }
 
 exports.findStockByIsbn = function(db, id) {
-  var collection = db.collection('books');
+  var collection = db.collection('books_msz');
   return collection.findOne( { "isbn": id }).then(function(data) {
     return data;
   });
